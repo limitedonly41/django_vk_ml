@@ -1,0 +1,99 @@
+@media (max-width: 1024px) {
+.testbox {
+
+}
+}
+@media (max-width: 768px) {
+.testbox {
+height: 100%
+}
+}
+@media (max-width: 425px) {
+.testbox {
+height: 800px;
+}
+}
+@media (max-width: 375px) {
+.testbox {
+}
+}
+@media (max-width: 425px) {
+.btn_checker {
+font-size: 13px;
+}
+}
+@media (max-width: 375px) {
+.btn_checker {
+font-size: 11px;
+}
+}
+@media (max-width: 568px) {
+form {
+height: 100%;
+width: 100%;
+padding: 0px;
+margin: 0px;
+}
+}
+@media (max-width: 1024px) {
+.banner {
+position: relative;
+height: 278px;
+background-image: url("/static/vk-bot.jpg");
+background-repeat: no-repeat;
+background-size: contain;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+}
+@media (max-width: 768px) {
+.banner {
+position: relative;
+height: 205px;
+background-image: url("/static/vk-bot.jpg");
+background-repeat: no-repeat;
+background-size: contain;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+}
+@media (max-width: 425px) {
+.banner {
+position: relative;
+height: 135px;
+background-image: url("/static/vk-bot.jpg");
+background-repeat: no-repeat;
+background-size: contain;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+}
+@media (max-width: 375px) {
+.banner {
+position: relative;
+height: 118px;
+background-image: url("/static/vk-bot.jpg");
+background-repeat: no-repeat;
+background-size: contain;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+}
+@media (max-width: 425px) {
+.btn_checker {
+font-size: 13px;
+}
+}
+@media (max-width: 375px) {
+.btn_checker {
+font-size: 11px;
+}
+}
