@@ -3,6 +3,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+        .type_input1{
+            width: 10px;
+            }
+        .type_input2{
+            width: 10px;
+            }
+    </style>
     <title>Определить бота вконтакте</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -21,14 +29,18 @@
     <div class="testbox">
     <form action="/external/" method="post">
         <div class="banner"></div>
+        <p>Выберите тип</p>
+        <input class='type_input1' type="radio" id="human" name="gender" value="human">
+        <label for="human">User</label><br>
+        <input class='type_input2' type="radio" id="group" name="gender" value="group">
+        <label for="group">Group</label><br>
         {% csrf_token %}
        Input Text:
        <br>
-        <input type="text" class="input_area_btn" name="param" placeholder="Введите id сообщества VK" required>
+        <input type="text" class="input_area_btn" name="param" placeholder="Введите id" required>
         <br>
         <input type="submit" class="btn_checker" value="Проверить">
-        <!-- <p>Точность модели</p>
-        <input type="text" class="input_area" name="data" value={{data1.accuracy}}> -->
+
         <br>
 
     </form>

@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        body{
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border-radius: 25px;
+            }
+
+        .button:hover {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+    </style>
+    <title>Определить бота вконтакте</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" media="(min-width: 1440px)" href="/static/style_4k.css">
+    <link rel="stylesheet" media="(max-width: 1440px)" href="/static/style_1440.css">
+    <link rel="stylesheet" media="(max-width: 1024px)" href="/static/style_1024.css">
+    <link rel="stylesheet" media="(max-width: 768px)" href="/static/style_768.css">
+    <link rel="stylesheet" media="(max-width: 425px)" href="/static/style_425.css">
+    <link rel="stylesheet" media="(max-width: 375px)" href="/static/style_375.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<body>    
+    <h1>Ответ </h1>
+    <input type="text" class="input_area" name="data" value={{data1}}>
+    <div class="button">     
+        <a style="color:white" href="/">На главную страницу</a>
+    </div>
+</body>
+
+</html>

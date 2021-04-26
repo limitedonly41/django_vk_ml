@@ -9,14 +9,14 @@ import io
 import urllib, base64
 
 from django.shortcuts import render
-from mysite.get_data import get_all_user_info
+from mysite.get_data import get_all_user_info, features
 from mysite.model_ml import predict
 def button(request):
     return render(request, 'home.html')
 
 def external(request):
 	inp = request.POST.get('param')
-
+	type_id = request.POST.get('gender')
 	def check_bot(data):
 	
 		bot_count = 0
@@ -44,41 +44,64 @@ def external(request):
 		# print(len([i for i in answers if i != '1' and i != '0']))
 		return real_count, bot_count
 
+	def check_bot_human(data):
+		if(data):
+			feature = features(data)
+			if feature:
+				if feature == "verified" or feature == "private":
+					return 1
+				elif feature == "banned":
+					return 0
+				elif feature == "mistake":
+					return "Error"
+				else:
+					feature_df = pd.DataFrame(feature, index=[0])
+					return predict(feature_df)
+					
 
+	if type_id == 'group':
+		real_count, bot_count = check_bot(inp)
 
-	real_count, bot_count = check_bot(inp)
+		marks = dict()
+		marks['real'] = real_count
+		marks['bot'] = bot_count
 
-	marks = dict()
-	marks['real'] = real_count
-	marks['bot'] = bot_count
+		labels = ['Реальный пользователь', 'Бот']
+		men_means = [real_count, bot_count]
 
-	labels = ['Реальный пользователь', 'Бот']
-	men_means = [real_count, bot_count]
+		x = np.arange(len(labels))  # the label locations
+		width = 0.35  # the width of the bars
 
-	x = np.arange(len(labels))  # the label locations
-	width = 0.35  # the width of the bars
+		fig, ax = plt.subplots()
+		rects1 = ax.bar(x, men_means, width)
 
-	fig, ax = plt.subplots()
-	rects1 = ax.bar(x, men_means, width)
+		# Add some text for labels, title and custom x-axis tick labels, etc.
+		ax.set_ylabel('Количество')
+		ax.set_title('Рейтинг группы Вк')
+		ax.set_xticks(x)
+		ax.set_xticklabels(labels)
+		ax.legend()
 
-	# Add some text for labels, title and custom x-axis tick labels, etc.
-	ax.set_ylabel('Количество')
-	ax.set_title('Рейтинг группы Вк')
-	ax.set_xticks(x)
-	ax.set_xticklabels(labels)
-	ax.legend()
+		ax.bar_label(rects1)
 
-	ax.bar_label(rects1)
+		fig.tight_layout()
 
-	fig.tight_layout()
+		fig = plt.gcf()
+		#convert graph into dtring buffer and then we convert 64 bit code into image
+		buf = io.BytesIO()
+		fig.savefig(buf,format='png')
+		buf.seek(0)
+		string = base64.b64encode(buf.read())
+		uri =  urllib.parse.quote(string)
+		return render(request,'image.html',{'data':uri})
+	elif type_id == 'human':
+		data = features(inp)
 
-	fig = plt.gcf()
-	#convert graph into dtring buffer and then we convert 64 bit code into image
-	buf = io.BytesIO()
-	fig.savefig(buf,format='png')
-	buf.seek(0)
-	string = base64.b64encode(buf.read())
-	uri =  urllib.parse.quote(string)
-	return render(request,'image.html',{'data':uri})
-
-	# return render(request,'home.html',{'data1':marks})
+		data = check_bot_human(inp)
+		if data == 1:
+			data = "Real"
+		elif data == 0:
+			data = "Bot"
+		else:
+			data = "Error"
+		return render(request,'human.html',{'data1':data})
