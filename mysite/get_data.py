@@ -7,7 +7,7 @@ import datetime
 from aiohttp import ClientSession
 start_time = time.time()
 
-token = '18019db418019db418019db4a01875ed881180118019db447882228875fa30302b2b588'
+token = ''
 version = '5.130'
 fields = [" about, activities, books, career, city, connections, counters, country, education, followers_count, games, has_mobile, has_photo, interests, last_seen, military, occupation, personal, quotes, relation, relatives, site, universities, verified "]
 
@@ -377,7 +377,7 @@ def features(username):
         username = username.split('https://vk.com/')[1]
     except:
         username = username
-    token = '18019db418019db418019db4a01875ed881180118019db447882228875fa30302b2b588'
+    token = ''
     version = '5.130'
     fields = [ " has_mobile, last_seen, connections, education, city, counters, has_photo,  fields, verified, personal, relatives, relation, schools, site, career, followers_count "]
     response = requests.get('https://api.vk.com/method/users.get?',
